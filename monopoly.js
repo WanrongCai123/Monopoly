@@ -16,6 +16,8 @@ var buildingLoc = [{x: 958, y:170},
 var app;
 var playerCanvas;
 var locNum = 0;
+
+
 //events function
 function LovettEvents() {}
 
@@ -86,7 +88,8 @@ function updateIntelligence(update){
     //var p = playerCanvas[turn];
     //p.intellgence = p.intellgence + update;
 
-    playerCanvas.intellgence = playerCanvas.intellgence + update;
+    playerCanvas.intelligence = playerCanvas.intellgence + update;
+    console.log(playerCanvas.intelligence);
 }
 
 function updateHappiness(update){
@@ -196,7 +199,6 @@ function createPlayerCanvas(canvas) {
     var happiness=10;
     var playerLoc = 0;
     var vaccined =2;
-
     let c = canvas.getContext("2d");
 
     let drawPlayer = function(x, y) {
@@ -236,6 +238,7 @@ window.onload = function() {
     //set canvas2 to window size
     playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
     $("#rollDice").click(rollDice);
+    $("#rollDice").click(FondrenLibraryEvents);
 
 };
 //roll dice. Every time move forward, roll dice
