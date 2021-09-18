@@ -23,12 +23,21 @@ function HermannParkEvents(){
                     popup("<p>Unfortunately, you have infected COVID-19 since you didn't wear a mask. \n Therefore, you need go to TMC to recovery for 2 rounds.(-5)</p>","ok")
                 }
     });
-}
+}              
 
 function SouthServeyEvents(){
     updateHealthyLevel(1);
     updateHappiness(1);
     popup("<p>Since you enjoyed a good meal in south survey, your heathlthy level and happiness has increase.(+1)(+1)</p>","ok")
+}
+
+function BRCEvents(){
+	popup("<p>Does mRNA vaccine contains live virus?</p>","Yes/No", function(){correct(); updateIntelligence(1);updateHappiness(1);}, function(){wrong();});
+}
+
+function RiceStadium(){
+	popup("<p>What's the name of the speech delivered by President Kennedy at Rice Stadium?</p>","I have a dream / We choose to go to the Moon", function(){correct(); updateIntelligence(1);updateHappiness(1);}, function(){wrong();});
+
 }
 
 function TudorFieldhouseEvents(){
@@ -74,6 +83,14 @@ function updateHealthyLevel(update){
     // var p = player[turn];
     // p.healthyLevel = p.healthyLevel + update;
     playerCanvas.healthyLevel = playerCanvas.healthyLevel + update;
+}
+
+function correct(){
+	document.getElementById("popuptext").innerHTML = "You are Correct!"
+}
+
+function wrong(){
+	document.getElementById("popuptext").innerHTML = "Wrong Answer:("
 }
 
 function popup(HTML, option, actiona, actionb) {
