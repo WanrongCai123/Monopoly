@@ -78,7 +78,7 @@ window.onload = function() {
     //set canvas2 to window size
     playerCanvas.width = window.innerWidth;
     playerCanvas.height = window.innerHeight;
-    playerCanvas.drawPlayer(0, 0);
+    playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
     $("#rollDice").click(updatePlayer);
 
 };
