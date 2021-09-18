@@ -7,7 +7,7 @@ function createApp(canvas) {
     var location;
     var image;
     //building location
-    var buld = [{x:0, y:0}]
+    var buld = [{x:600, y:300}, {x:550, y:400}, {x:750, y:400}, {x:450, y:500}, {x:400, y:600}, {x:350, y:500}, {x:250, y:300}, {x:100, y:300}, {x:300, y:320}, {x:320, y:320}, {x:320, y:350}, {x:400, y:320}, {x:340, y:150}, {x:550, y:270}, {x:570, y:300}, {x:600, y:200}, {x:550, y:700}];
 
     var player = function(){
         energy = 10;
