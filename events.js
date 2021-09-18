@@ -53,6 +53,18 @@ function TudorFieldhouseEvents(){
     });
 }
 
+function RiceVillageEvents(){
+    popup("<p>What would you like to eat?</p>","newstring", function(){
+        updateHappiness(-1);
+        updateHealthyLevel(1);
+        popup("<p>Because of the healthy meal, your healthy level has increased and your happiness has decreased.(+1)(-1)</p>","ok");
+    }, function(){
+            updateHappiness(1);
+            updateHealthyLevel(-1);
+            popup("<p>Because of the unhealthy meal, your healthy level has decreased and your happiness has increased.(-1)(+1)</p>","ok");
+    }, "Sweet Green", "Shake Shack");
+}
+
 function checkVaccinedStatus(){
     if(playerCanvas.vaccined < 2){
         return false;
@@ -70,7 +82,7 @@ function updateIntelligence(update){
     //var p = playerCanvas[turn];
     //p.intellgence = p.intellgence + update;
 
-    playerCanvas.intellgence = playerCanvas.intellgence + update;
+    playerCanvas.intelligence = playerCanvas.intelligence + update;
 }
 
 function updateHappiness(update){
@@ -93,7 +105,7 @@ function wrong(){
 	document.getElementById("popuptext").innerHTML = "Wrong Answer:("
 }
 
-function popup(HTML, option, actiona, actionb) {
+function popup(HTML, option, actiona, actionb, stringa, stringb) {
 	document.getElementById("popuptext").innerHTML = HTML;
 	document.getElementById("popup").style.width = "300px";
 	document.getElementById("popup").style.top = "0px";
@@ -132,7 +144,19 @@ function popup(HTML, option, actiona, actionb) {
 			$("#popupbackground").fadeOut(400);
 		}).on("click", actiona);
 
-	}
+    // input string
+    } else if (option === "newstring") {
+        document.getElementById("popuptext").innerHTML += "<div><input type=\"button\" value=\"" + stringa + "\" id=\"popupstringa\" /><input type=\"button\" value=\"" + stringb + "\" id=\"popupstringb\" /></div>";
+
+        $("#popupstringa, #popupstringb").on("click", function() {
+            $("#popupwrap").hide();
+            $("#popupbackground").fadeOut(400);
+        });
+
+        $("#popupstringa").on("click", actiona);
+        $("#popupstringb").on("click", actionb);
+    }
+
 
 	// Show using animation.
 	$("#popupbackground").fadeIn(400, function() {
