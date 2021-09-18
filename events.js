@@ -11,7 +11,7 @@ function HermannParkEvents(){
     popup("<p>Would you like to  wear a mask?</p>", function() {
         var covidPossibility = 0.5;
 
-    }, "Yes/No","No");
+    }, "Yes/No", "No");
 }
 
 function updateIntelligence(update){
@@ -33,21 +33,21 @@ function updateHealthyLevel(update){
     playerCanvas.healthyLevel = playerCanvas.healthyLevel + update;
 }
 
-function popup(HTML, action, option, choose) {
+function popup(HTML, option, actiona, actionb, choose) {
 	document.getElementById("popuptext").innerHTML = HTML;
 	document.getElementById("popup").style.width = "300px";
 	document.getElementById("popup").style.top = "0px";
 	document.getElementById("popup").style.left = "0px";
 
-	if (!option && typeof action === "string") {
-		option = action;
-	}
-
 	option = option ? option.toLowerCase() : "";
 
-	if (typeof action !== "function") {
-		action = null;
+	if (typeof actiona !== "function") {
+		actiona = null;
 	}
+
+    if (typeof actionb !== "function") {
+        actionb = null;
+    }
 
 	// Yes/No
 	if (option === "yes/no") {
@@ -58,10 +58,10 @@ function popup(HTML, action, option, choose) {
 			$("#popupbackground").fadeOut(400);
 		});
 
-        if(choose === "yes"){
-            $("#popupyes").on("click", action);
+        if(choose === "Yes"){
+            $("#popupyes").on("click", actiona);
         }else{
-            $("#popupno").on("click", action);
+            $("#popupno").on("click", actionb);
         }
 		
 
@@ -73,7 +73,7 @@ function popup(HTML, action, option, choose) {
 		$("#popupclose").on("click", function() {
 			$("#popupwrap").hide();
 			$("#popupbackground").fadeOut(400);
-		}).on("click", action);
+		}).on("click", actiona);
 
 	}
 
