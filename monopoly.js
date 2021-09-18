@@ -79,11 +79,14 @@ var buildingLoc = [{x: 958, y:170},
 var app;
 var playerCanvas;
 var locNum = 0;
+
 window.onload = function() {
-    var energy;
+    var healthyLevel;
     var intelligence;
     var happiness;
     var playerLoc;
+    var vaccined;
+
     app = createBkgroundCanvas(document.getElementById("canvas1"));
     //set canvas1 to window size
     app.drawBackground();
