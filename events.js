@@ -4,7 +4,7 @@
 function LovettEvents() {}
 
 function FondrenLibraryEvents(){
-    updateIntelligence(1);
+   // updateIntelligence(1);
     popup("<p>After a day studying in the library, your intelligence has increased.(+1)</p>","ok")
 }
 
@@ -123,3 +123,9 @@ function popup(HTML, option, actiona, actionb) {
 	});
 
 }
+window.onload = function() {
+     var p = document.getElementById("popuptext");
+     p.onclick = FondrenLibraryEvents;
+   // $("#popuptext").click(FondrenLibraryEvents);
+
+};

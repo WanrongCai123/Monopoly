@@ -78,11 +78,11 @@ var playerCanvas;
 var locNum = 0;
 
 window.onload = function() {
-    var healthyLevel;
-    var intelligence;
-    var happiness;
+    var healthyLevel = 10;
+    var intelligence =10;
+    var happiness=10;
     var playerLoc;
-    var vaccined;
+    var vaccined =2;
 
     app = createBkgroundCanvas(document.getElementById("canvas1"));
     //set canvas1 to window size
