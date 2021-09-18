@@ -60,8 +60,6 @@ function createPlayerCanvas(canvas) {
 }
 var canvasWidth = document.getElementById("canvas1").width;
 var canvasHeight = document.getElementById("canvas1").height;
-console.log(canvasWidth);
-console.log(canvasHeight);
 var buildingLoc = [{x: 958, y:170}, 
                     {x:1120, y:370},
                     {x:725, y:620},
