@@ -8,6 +8,7 @@ function createApp(canvas) {
     var image;
     //building location
     var buld = [{x:0, y:0}]
+    
 
     var player = function(){
         energy = 10;
@@ -24,25 +25,36 @@ function createApp(canvas) {
         };
         img.src = 'images/MatchStickMan.png';
     }
+}
 
-
+function createPlayer(canvas) {
+    let c = canvas.getContext("2d");
+    let drawPlayer = function() {
+        var img = new Image();
+        img.onload = function() {
+            c.drawImage(img, 0, 100);
+        };
+        img.src = 'images/MatchStickMan.png';
+    };
 
     let clear = function() {
         c.clearRect(0,0, canvas.width, canvas.height);
     };
 
     return {
-        drawLine: drawLine,
+        drawPlayer: drawPlayer,
         clear: clear
     }
 }
 
 window.onload = function() {
-    app = createApp(document.querySelector("canvas"));
+    app = createApp(document.querySelector("canvas1"));
+    player = createPlayer(document.querySelector("canvas2"));
+    player.drawPlayer();
+    console.log("1");
 
-    $("#btn-line").click(createLine);
-    $("#btn-move").click(setUpdateFreq);
-    $("#btn-reset").click(reset);
+    $("#btn-rollDice").click(rollDice);
+
 };
 //roll dice. Every time move forward, roll dice
 function rollDice(){
