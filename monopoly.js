@@ -1,13 +1,19 @@
 //initialize game and set variable
-function createBkgroundCanvas(canvas, buld) {
+function createBkgroundCanvas(canvas) {
     let c = canvas.getContext("2d");
-    //building location
-
+    let drawBackground = function(){
+        var img = new Image();
+        img.onload = function() {
+            c.drawImage(img, 0, 0);
+        };
+        img.src = 'images/BuildingLocation.jpg';
+    }
     let clear = function() {
         c.clearRect(0,0, canvas.width, canvas.height);
     };
 
     return {
+        drawBackground: drawBackground,
         clear: clear
     }
 }
@@ -15,11 +21,11 @@ function createBkgroundCanvas(canvas, buld) {
 function createPlayerCanvas(canvas) {
     
     let c = canvas.getContext("2d");
-    console.log("1");
-    let drawPlayer = function() {
+
+    let drawPlayer = function(x, y) {
         var img = new Image();
         img.onload = function() {
-            c.drawImage(img, 100, 100);
+            c.drawImage(img, x, y);
         };
         img.src = 'images/MatchStickMan.png';
     };
@@ -28,24 +34,26 @@ function createPlayerCanvas(canvas) {
         c.clearRect(0,0, canvas.width, canvas.height);
     };
 
+
     return {
         drawPlayer: drawPlayer,
         clear: clear
     }
 }
-
+var buildingLoc = [{x:600, y:300}, {x:550, y:400}, {x:750, y:400}, {x:450, y:500}, {x:400, y:600}, {x:350, y:500}, {x:250, y:300}, {x:100, y:300}, {x:300, y:320}, {x:320, y:320}, {x:320, y:350}, {x:400, y:320}, {x:340, y:150}, {x:550, y:270}, {x:570, y:300}, {x:600, y:200}, {x:550, y:700}];
+var app;
+var playerCanvas;
+var locNum = 0;
 window.onload = function() {
     var energy;
     var intelligence;
     var happiness;
     var playerLoc;
-    var buildingLoc = [{x:600, y:300}, {x:550, y:400}, {x:750, y:400}, {x:450, y:500}, {x:400, y:600}, {x:350, y:500}, {x:250, y:300}, {x:100, y:300}, {x:300, y:320}, {x:320, y:320}, {x:320, y:350}, {x:400, y:320}, {x:340, y:150}, {x:550, y:270}, {x:570, y:300}, {x:600, y:200}, {x:550, y:700}];
-    app = createBkgroundCanvas(document.getElementById("canvas1"), buld);
+    app = createBkgroundCanvas(document.getElementById("canvas1"));
+    app.drawBackground();
     playerCanvas = createPlayerCanvas(document.getElementById("canvas2"));
-    console.log("2");
-    playerCanvas.drawPlayer();
-
-    $("#rollDice").click(rollDice);
+    playerCanvas.drawPlayer(100, 100);
+    $("#rollDice").click(updatePlayer);
 
 };
 //roll dice. Every time move forward, roll dice
@@ -53,7 +61,12 @@ function rollDice(){
     
 }
 function updatePlayer() {
-
+    playerCanvas.clear();
+    console.log(buildingLoc[0].x);
+    console.log(buildingLoc[locNum].y);
+    console.log(locNum);
+    playerCanvas.drawPlayer(500, 500);
+    locNum = locNum + 1;
 }
 
 function getDice(){
