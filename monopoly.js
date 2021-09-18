@@ -71,13 +71,9 @@ window.onload = function() {
     var playerLoc;
     app = createBkgroundCanvas(document.getElementById("canvas1"));
     //set canvas1 to window size
-    app.width  = window.innerWidth;
-    app.height = window.innerHeight;
     app.drawBackground();
     playerCanvas = createPlayerCanvas(document.getElementById("canvas2"));
     //set canvas2 to window size
-    playerCanvas.width = window.innerWidth;
-    playerCanvas.height = window.innerHeight;
     playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
     $("#rollDice").click(updatePlayer);
 
@@ -89,8 +85,11 @@ function rollDice(){
 function updatePlayer() {
     playerCanvas.clear();
     playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
+    console.log(buildingLoc[locNum].x);
+    console.log(buildingLoc[locNum].y);
     locNum = locNum + 1;
     locNum = locNum % buildingLoc.length;
+    
 }
 
 function getDice(){
