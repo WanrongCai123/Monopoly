@@ -4,7 +4,7 @@ function createBkgroundCanvas(canvas) {
     let drawBackground = function(){
         var img = new Image(c.width, c.width);
         img.onload = function() {
-            c.drawImage(img, 0, 0);
+            c.drawImage(img, 0, 0, canvas.width, canvas.height);
         };
         img.src = 'images/BuildingLocation.jpg';
     }
@@ -72,7 +72,7 @@ window.onload = function() {
     app = createBkgroundCanvas(document.getElementById("canvas1"));
     app.drawBackground();
     playerCanvas = createPlayerCanvas(document.getElementById("canvas2"));
-    playerCanvas.drawPlayer(100, 100);
+    playerCanvas.drawPlayer(0, 0);
     $("#rollDice").click(updatePlayer);
 
 };
