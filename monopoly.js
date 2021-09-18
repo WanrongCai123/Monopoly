@@ -21,7 +21,7 @@ function createBkgroundCanvas(canvas) {
 function createPlayerCanvas(canvas) {
     
     let c = canvas.getContext("2d");
-    console.log("1");
+
     let drawPlayer = function(x, y) {
         var img = new Image();
         img.onload = function() {
@@ -43,7 +43,7 @@ function createPlayerCanvas(canvas) {
 var buildingLoc = [{x:600, y:300}, {x:550, y:400}, {x:750, y:400}, {x:450, y:500}, {x:400, y:600}, {x:350, y:500}, {x:250, y:300}, {x:100, y:300}, {x:300, y:320}, {x:320, y:320}, {x:320, y:350}, {x:400, y:320}, {x:340, y:150}, {x:550, y:270}, {x:570, y:300}, {x:600, y:200}, {x:550, y:700}];
 var app;
 var playerCanvas;
-var locNum;
+var locNum = 0;
 window.onload = function() {
     var energy;
     var intelligence;
@@ -62,8 +62,9 @@ function rollDice(){
 }
 function updatePlayer() {
     playerCanvas.clear();
-    // console.log(buildingLoc[locNum].x);
-    // console.log(buildingLoc[locNum].y);
+    console.log(buildingLoc[0].x);
+    console.log(buildingLoc[locNum].y);
+    console.log(locNum);
     playerCanvas.drawPlayer(500, 500);
     locNum = locNum + 1;
 }
