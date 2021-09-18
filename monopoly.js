@@ -16,12 +16,16 @@ function createApp(canvas) {
         location = [{x:0, y:0}];
         image = document.getElementById();
     }
+    function drawPlayer() {
+        var ctx = document.getElementById('canvas2').getContext('2d');
+        var img = new Image();
+        img.onload = function() {
+            ctx.drawImage(img, 0, 100);
+        };
+        img.src = 'images/MatchStickMan.png';
+    }
 
-    let playerMove = function(buld, diceValue) {
-        c.beginPath();
-        c.moveTo(buld[diceValue].x, buld[diceValue].y);
-        c.stroke();
-    };
+
 
     let clear = function() {
         c.clearRect(0,0, canvas.width, canvas.height);

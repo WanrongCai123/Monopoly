@@ -8,7 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 
-<body>
+<body style="background-color: midnightblue" >
+
     <input id="dice" type="button" value="Run Dice">
 
     <div style="position:fixed; top:3em; left:0em;">
@@ -17,6 +18,18 @@
     <div style="position:fixed; top:3em; left:0em;">
         <canvas width="800" height="800" id="canvas2"></canvas>
     </div>
+
+<script>
+    function draw() {
+        var ctx = document.getElementById('canvas2').getContext('2d');
+        var img = new Image();
+        img.onload = function() {
+            ctx.drawImage(img, 0, 100);
+        };
+        img.src = 'images/MatchStickMan.png';
+    }
+    draw();
+</script>
 
 </body>
 </html>
