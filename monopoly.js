@@ -5,15 +5,13 @@ function createBkgroundCanvas(canvas) {
         var img = new Image(c.width, c.width);
         img.onload = function() {
             c.drawImage(img, 0, 0, canvas.width, canvas.height);
+            var buildingLength=buildingLoc.length;
+            for (let i = 0; i < buildingLength; i++) {
+                var nextLoc = (i + 1) % buildingLength;
+                drawLine(buildingLoc[i].x + 30, buildingLoc[i].y + 30, buildingLoc[nextLoc].x + 30, buildingLoc[nextLoc].y + 30);
+            }
         };
         img.src = 'images/BuildingLocation.jpg';
-        
-        var buildingLength=buildingLoc.length;
-        
-        for (let i = 0; i < buildingLength; i++) {
-            var nextNum = (i + 1) % buildingLength;
-            drawLine( buildingLoc[i].x + 30, buildingLoc[i].y + 30, buildingLoc[nextNum].x + 30, buildingLoc[nextNum].y + 30);
-        }
     }
     let drawLine = function(startX, startY, endX, endY) {
         c.beginPath();
@@ -90,6 +88,8 @@ window.onload = function() {
     app = createBkgroundCanvas(document.getElementById("canvas1"));
     //set canvas1 to window size
     app.drawBackground();
+        
+
     playerCanvas = createPlayerCanvas(document.getElementById("canvas2"));
     //set canvas2 to window size
     playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
