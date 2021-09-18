@@ -29,7 +29,13 @@ function createPlayerCanvas(canvas) {
         };
         img.src = 'images/MatchStickMan.png';
     };
-    
+
+    let drawLine = function(startX, startY, endX, endY) {
+        c.beginPath();
+        c.moveTo(startX, startY);
+        c.lineTo(endX, endY);
+        c.stroke();
+    };
 
     let clear = function() {
         c.clearRect(0,0, canvas.width, canvas.height);
@@ -37,6 +43,7 @@ function createPlayerCanvas(canvas) {
 
 
     return {
+        drawLine: drawLine,
         drawPlayer: drawPlayer,
         clear: clear
     }
@@ -45,8 +52,7 @@ var canvasWidth = document.getElementById("canvas1").width;
 var canvasHeight = document.getElementById("canvas1").height;
 console.log(canvasWidth);
 console.log(canvasHeight);
-var buildingLoc = [
-                    {x: 958, y:170}, 
+var buildingLoc = [{x: 958, y:170}, 
                     {x:750, y:380}, 
                     {x:610, y:380}, 
                     {x:300, y:320}, 
