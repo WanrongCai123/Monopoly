@@ -4,7 +4,7 @@ function createBkgroundCanvas(canvas) {
     let drawBackground = function(){
         var img = new Image(c.width, c.width);
         img.onload = function() {
-            c.drawImage(img, 0, 0);
+            c.drawImage(img, 0, 0, canvas.width, canvas.height);
         };
         img.src = 'images/BuildingLocation.jpg';
     }
@@ -30,12 +30,20 @@ function createPlayerCanvas(canvas) {
         img.src = 'images/MatchStickMan.png';
     };
 
+    let drawLine = function(startX, startY, endX, endY) {
+        c.beginPath();
+        c.moveTo(startX, startY);
+        c.lineTo(endX, endY);
+        c.stroke();
+    };
+
     let clear = function() {
         c.clearRect(0,0, canvas.width, canvas.height);
     };
 
 
     return {
+        drawLine: drawLine,
         drawPlayer: drawPlayer,
         clear: clear
     }
@@ -44,23 +52,18 @@ var canvasWidth = document.getElementById("canvas1").width;
 var canvasHeight = document.getElementById("canvas1").height;
 console.log(canvasWidth);
 console.log(canvasHeight);
-var buildingLoc = [{x: 0.7725*canvasWidth, y:0.4244*canvasWidth}, 
-                    {x:0.6675*canvasWidth, y:0.4695*canvasHeight}, 
-                    {x:0.935*canvasWidth, y:0.6483*canvasHeight}, 
-                    {x:0.63*canvasWidth, y:0.6840*canvasHeight}, 
-                    {x:0.5688*canvasWidth, y:canvasHeight}, 
-                    {x:0.4975*canvasWidth, y:0.7073*canvasHeight}, 
-                    {x:0.2563*canvasWidth, y:0.6267*canvasHeight}, 
-                    {x:0.01875*canvasWidth, y:0.6925*canvasHeight}, 
-                    {x:0.4475*canvasWidth, y:0.663*canvasHeight}, 
-                    {x:0.525*canvasWidth, y:0.4742*canvasHeight}, 
-                    {x:0.5163*canvasWidth, y:0.5258*canvasHeight}, 
-                    {x:0.5525*canvasWidth, y:0.5079*canvasHeight}, 
-                    {x:0.55*canvasWidth, y:0.3492*canvasHeight}, 
-                    {x:0.6775*canvasWidth, y:0.369*canvasHeight}, 
-                    {x:0.695*canvasWidth, y:0.4187*canvasHeight}, 
-                    {x:0.7325*canvasWidth, y:0.4187*canvasHeight}, 
-                    {x:0.6875*canvasWidth, y:canvasHeight} ];
+var buildingLoc = [{x: 958, y:170}, 
+                    {x:750, y:380}, 
+                    {x:610, y:380}, 
+                    {x:300, y:320}, 
+                    {x:550, y:320},
+                    {x:550, y:220},
+                    {x:630, y:240},
+                    {x:725, y:220},
+                    {x:820, y:280},
+                    {x: 830, y:200},
+                    {x: 898, y:125}
+                    ];
 var app;
 var playerCanvas;
 var locNum = 0;
@@ -70,9 +73,11 @@ window.onload = function() {
     var happiness;
     var playerLoc;
     app = createBkgroundCanvas(document.getElementById("canvas1"));
+    //set canvas1 to window size
     app.drawBackground();
     playerCanvas = createPlayerCanvas(document.getElementById("canvas2"));
-    playerCanvas.drawPlayer(100, 100);
+    //set canvas2 to window size
+    playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
     $("#rollDice").click(updatePlayer);
 
 };
@@ -83,8 +88,10 @@ function rollDice(){
 function updatePlayer() {
     playerCanvas.clear();
     playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
+    
     locNum = locNum + 1;
     locNum = locNum % buildingLoc.length;
+    
 }
 
 function getDice(){
