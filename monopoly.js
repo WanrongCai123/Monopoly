@@ -7,12 +7,31 @@ function createBkgroundCanvas(canvas) {
             c.drawImage(img, 0, 0, canvas.width, canvas.height);
         };
         img.src = 'images/BuildingLocation.jpg';
+        
+        var buildingLength=buildingLoc.length;
+        
+        for (let i = 0; i < buildingLength; i++) {
+            var nextNum = (i + 1) % buildingLength;
+            drawLine( buildingLoc[i].x + 30, buildingLoc[i].y + 30, buildingLoc[nextNum].x + 30, buildingLoc[nextNum].y + 30);
+        }
     }
+    let drawLine = function(startX, startY, endX, endY) {
+        c.beginPath();
+        c.moveTo(startX, startY);
+        c.lineTo(endX, endY);
+        c.stroke();
+        // console.log(startX);
+        // console.log(startY);
+        // console.log(endX);
+        // console.log(endY);
+    };
+
     let clear = function() {
         c.clearRect(0,0, canvas.width, canvas.height);
     };
 
     return {
+        drawLine:drawLine,
         drawBackground: drawBackground,
         clear: clear
     }
@@ -30,12 +49,6 @@ function createPlayerCanvas(canvas) {
         img.src = 'images/MatchStickMan.png';
     };
 
-    let drawLine = function(startX, startY, endX, endY) {
-        c.beginPath();
-        c.moveTo(startX, startY);
-        c.lineTo(endX, endY);
-        c.stroke();
-    };
 
     let clear = function() {
         c.clearRect(0,0, canvas.width, canvas.height);
@@ -43,7 +56,6 @@ function createPlayerCanvas(canvas) {
 
 
     return {
-        drawLine: drawLine,
         drawPlayer: drawPlayer,
         clear: clear
     }
@@ -87,10 +99,10 @@ function rollDice(){
 }
 function updatePlayer() {
     playerCanvas.clear();
-    playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
-    
     locNum = locNum + 1;
     locNum = locNum % buildingLoc.length;
+    playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
+    
     
 }
 
