@@ -45,11 +45,14 @@ window.onload = function() {
     console.log("2");
     playerCanvas.drawPlayer();
 
-    // $("#btn-rollDice").click(rollDice);
+    $("#rollDice").click(rollDice);
 
 };
 //roll dice. Every time move forward, roll dice
 function rollDice(){
+    
+}
+function updatePlayer() {
 
 }
 
