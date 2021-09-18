@@ -17,10 +17,9 @@ function createApp(canvas) {
         image = document.getElementById();
     }
 
-    let drawLine = function(startX, startY, endX, endY) {
+    let playerMove = function(buld, diceValue) {
         c.beginPath();
-        c.moveTo(startX, startY);
-        c.lineTo(endX, endY);
+        c.moveTo(buld[diceValue].x, buld[diceValue].y);
         c.stroke();
     };
 
