@@ -5,18 +5,51 @@ function LovettEvents() {}
 
 function FondrenLibraryEvents(){
     updateIntelligence(1);
+    popup("<p>After a day studying in the library, your intelligence has increased.(+1)</p>","ok")
 }
 
 function HermannParkEvents(){
-    popup("<p>Would you like to wear a mask?</p>","Yes/No", function(){updateHappiness(1);}, function(){
-        var covidExposed = Math.random();
-        if(covidExposed > 0.3){
-            updateHealthyLevel(-2);
+    popup("<p>Would you like to wear a mask?</p>","Yes/No", function(){
             updateHappiness(1);
+            popup("<p>After a day hanging out in the Harmann Park, your Happiness has increased.(+1)</p>","ok")
+        }, function(){
+                var covidExposed = Math.random();
+                if(covidExposed > 0.3){
+                    updateHealthyLevel(-2);
+                    updateHappiness(1);
+                    popup("<p>After a day hanging out in the Harmann Park, your Happiness has increased.(+1) \n But because you didn't wear a mask, you have a higher possibility of contracting COVID-19 and your healthy level decreased.(-2)</p>","ok")
+                }else{
+                    getCovid();
+                    popup("<p>Unfortunately, you have infected COVID-19 since you didn't wear a mask. \n Therefore, you need go to TMC to recovery for 2 rounds.(-5)</p>","ok")
+                }
+    });
+}
+
+function SouthServeyEvents(){
+    updateHealthyLevel(1);
+    updateHappiness(1);
+    popup("<p>Since you enjoyed a good meal in south survey, your heathlthy level and happiness has increase.(+1)(+1)</p>","ok")
+}
+
+function TudorFieldhouseEvents(){
+    popup("<p>Would you like to get vaccined for COVID-19?</p>","Yes/No", function(){
+        if(checkVaccinedStatus == false){
+            updateHealth(5);
+            popup("<p>After being vaccined for COVID-19, your healthy level has strongly increased.(+5)</p>","ok");
         }else{
-            getCovid();
-        }
-    }, "No");
+            popup("<p>Since you have already been fully vaccined, you can't be double vaccined.</p>")
+        }   
+    }, function(){
+            popup("<p>Since you have refused to get vaccined, your healthy level did not changed.</p>","ok")
+    });
+}
+
+function checkVaccinedStatus(){
+    if(playerCanvas.vaccined < 2){
+        return false;
+    }else{
+        return true;
+    }
 }
 
 function getCovid(){
@@ -43,7 +76,7 @@ function updateHealthyLevel(update){
     playerCanvas.healthyLevel = playerCanvas.healthyLevel + update;
 }
 
-function popup(HTML, option, actiona, actionb, choose) {
+function popup(HTML, option, actiona, actionb) {
 	document.getElementById("popuptext").innerHTML = HTML;
 	document.getElementById("popup").style.width = "300px";
 	document.getElementById("popup").style.top = "0px";
@@ -73,7 +106,7 @@ function popup(HTML, option, actiona, actionb, choose) {
 		
 
 	// Ok
-	} else if (option !== "blank") {
+	} else if (option === "ok") {
 		$("#popuptext").append("<div><input type='button' value='OK' id='popupclose' /></div>");
 		$("#popupclose").focus();
 
