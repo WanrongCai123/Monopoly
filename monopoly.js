@@ -2,7 +2,7 @@
 function createBkgroundCanvas(canvas) {
     let c = canvas.getContext("2d");
     let drawBackground = function(){
-        var img = new Image();
+        var img = new Image(c.width, c.width);
         img.onload = function() {
             c.drawImage(img, 0, 0);
         };
@@ -84,7 +84,6 @@ function updatePlayer() {
     playerCanvas.clear();
     playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
     locNum = locNum + 1;
-    console.log(buildingLoc.length);
     locNum = locNum % buildingLoc.length;
 }
 
