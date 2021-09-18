@@ -140,9 +140,3 @@ function popup(HTML, option, actiona, actionb) {
 	});
 
 }
-window.onload = function() {
-     var p = document.getElementById("popuptext");
-     p.onclick = FondrenLibraryEvents;
-   // $("#popuptext").click(FondrenLibraryEvents);
-
-};
