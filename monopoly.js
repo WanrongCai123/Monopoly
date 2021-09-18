@@ -40,7 +40,27 @@ function createPlayerCanvas(canvas) {
         clear: clear
     }
 }
-var buildingLoc = [{x:600, y:300}, {x:550, y:400}, {x:750, y:400}, {x:450, y:500}, {x:400, y:600}, {x:350, y:500}, {x:250, y:300}, {x:100, y:300}, {x:300, y:320}, {x:320, y:320}, {x:320, y:350}, {x:400, y:320}, {x:340, y:150}, {x:550, y:270}, {x:570, y:300}, {x:600, y:200}, {x:550, y:700}];
+var canvasWidth = document.getElementById("canvas1").width;
+var canvasHeight = document.getElementById("canvas1").height;
+console.log(canvasWidth);
+console.log(canvasHeight);
+var buildingLoc = [{x: 0.7725*canvasWidth, y:0.4244*canvasWidth}, 
+                    {x:0.6675*canvasWidth, y:0.4695*canvasHeight}, 
+                    {x:0.935*canvasWidth, y:0.6483*canvasHeight}, 
+                    {x:0.63*canvasWidth, y:0.6840*canvasHeight}, 
+                    {x:0.5688*canvasWidth, y:canvasHeight}, 
+                    {x:0.4975*canvasWidth, y:0.7073*canvasHeight}, 
+                    {x:0.2563*canvasWidth, y:0.6267*canvasHeight}, 
+                    {x:0.01875*canvasWidth, y:0.6925*canvasHeight}, 
+                    {x:0.4475*canvasWidth, y:0.663*canvasHeight}, 
+                    {x:0.525*canvasWidth, y:0.4742*canvasHeight}, 
+                    {x:0.5163*canvasWidth, y:0.5258*canvasHeight}, 
+                    {x:0.5525*canvasWidth, y:0.5079*canvasHeight}, 
+                    {x:0.55*canvasWidth, y:0.3492*canvasHeight}, 
+                    {x:0.6775*canvasWidth, y:0.369*canvasHeight}, 
+                    {x:0.695*canvasWidth, y:0.4187*canvasHeight}, 
+                    {x:0.7325*canvasWidth, y:0.4187*canvasHeight}, 
+                    {x:0.6875*canvasWidth, y:canvasHeight} ];
 var app;
 var playerCanvas;
 var locNum = 0;
@@ -62,11 +82,10 @@ function rollDice(){
 }
 function updatePlayer() {
     playerCanvas.clear();
-    console.log(buildingLoc[0].x);
-    console.log(buildingLoc[locNum].y);
-    console.log(locNum);
-    playerCanvas.drawPlayer(500, 500);
+    playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
     locNum = locNum + 1;
+    console.log(buildingLoc.length);
+    locNum = locNum % buildingLoc.length;
 }
 
 function getDice(){
