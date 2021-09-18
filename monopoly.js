@@ -18,10 +18,7 @@ function createBkgroundCanvas(canvas) {
         c.moveTo(startX, startY);
         c.lineTo(endX, endY);
         c.stroke();
-        // console.log(startX);
-        // console.log(startY);
-        // console.log(endX);
-        // console.log(endY);
+
     };
 
     let clear = function() {
@@ -92,25 +89,41 @@ window.onload = function() {
     playerCanvas = createPlayerCanvas(document.getElementById("canvas2"));
     //set canvas2 to window size
     playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
-    $("#rollDice").click(updatePlayer);
+    $("#rollDice").click(rollDice);
 
 };
 //roll dice. Every time move forward, roll dice
 function rollDice(){
+    var randomNum = Math.floor(Math.random() * 2 + 1);
+    console.log(randomNum);
+    if (randomNum == 1) {
+        updatePlayerOnce();
+
+        document.getElementById("img1").style.visibility ="visible";
+        document.getElementById("img2").style.visibility ="hidden";
+    }
+    else{
+        updatePlayerTwice();
+        document.getElementById("img1").style.visibility ="hidden";
+        document.getElementById("img2").style.visibility ="visible";
+    }
     
 }
-function updatePlayer() {
+function updatePlayerOnce() {
     playerCanvas.clear();
     locNum = locNum + 1;
     locNum = locNum % buildingLoc.length;
     playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
     
+}
+function updatePlayerTwice() {
+    playerCanvas.clear();
+    locNum = locNum + 2;
+    locNum = locNum % buildingLoc.length;
+    playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
     
 }
 
-function getDice(){
-
-}
 
 function resetDice(){
 
