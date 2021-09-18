@@ -3,7 +3,7 @@ function Game(){
     var energy;
     var intelligence;
     var happiness;
-    var location
+    var location;
     var image;
 
     var player = function(){
