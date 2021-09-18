@@ -63,8 +63,9 @@ var canvasHeight = document.getElementById("canvas1").height;
 console.log(canvasWidth);
 console.log(canvasHeight);
 var buildingLoc = [{x: 958, y:170}, 
-                    {x:750, y:380}, 
-                    {x:610, y:380}, 
+                    {x:1180, y:320},
+                    {x:725, y:620},
+                    {x:5, y:380}, 
                     {x:300, y:320}, 
                     {x:550, y:320},
                     {x:550, y:220},
