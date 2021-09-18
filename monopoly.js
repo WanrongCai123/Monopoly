@@ -214,11 +214,6 @@ function createPlayerCanvas(canvas) {
 
 
     return {
-        healthyLevel: healthyLevel,
-        intelligence: intelligence,
-        happiness: happiness,
-        playerLoc: playerLoc,
-        vaccined: vaccined,
         drawPlayer: drawPlayer,
         clear: clear
     }
