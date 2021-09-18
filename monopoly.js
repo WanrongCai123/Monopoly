@@ -17,7 +17,11 @@ var app;
 var playerCanvas;
 var locNum = 0;
 
-
+var healthyLevel = 10;
+var intelligence =10;
+var happiness=10;
+var playerLoc = 0;
+var vaccined =2;
 //events function
 function LovettEvents() {}
 
@@ -88,8 +92,8 @@ function updateIntelligence(update){
     //var p = playerCanvas[turn];
     //p.intellgence = p.intellgence + update;
 
-    playerCanvas.intelligence = playerCanvas.intellgence + update;
-    console.log(playerCanvas.intelligence);
+    intelligence = intelligence + update;
+    console.log(intelligence);
 }
 
 function updateHappiness(update){
@@ -194,11 +198,6 @@ function createBkgroundCanvas(canvas) {
 }
 
 function createPlayerCanvas(canvas) {
-    var healthyLevel = 10;
-    var intelligence =10;
-    var happiness=10;
-    var playerLoc = 0;
-    var vaccined =2;
     let c = canvas.getContext("2d");
 
     let drawPlayer = function(x, y) {
@@ -216,11 +215,6 @@ function createPlayerCanvas(canvas) {
 
 
     return {
-        healthyLevel: healthyLevel,
-        intelligence: intelligence,
-        happiness: happiness,
-        playerLoc: playerLoc,
-        vaccined: vaccined,
         drawPlayer: drawPlayer,
         clear: clear
     }
