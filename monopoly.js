@@ -70,8 +70,14 @@ window.onload = function() {
     var happiness;
     var playerLoc;
     app = createBkgroundCanvas(document.getElementById("canvas1"));
+    //set canvas1 to window size
+    app.width  = window.innerWidth;
+    app.height = window.innerHeight;
     app.drawBackground();
     playerCanvas = createPlayerCanvas(document.getElementById("canvas2"));
+    //set canvas2 to window size
+    playerCanvas.width = window.innerWidth;
+    playerCanvas.height = window.innerHeight;
     playerCanvas.drawPlayer(0, 0);
     $("#rollDice").click(updatePlayer);
 
