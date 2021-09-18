@@ -8,10 +8,20 @@ function FondrenLibraryEvents(){
 }
 
 function HermannParkEvents(){
-    popup("<p>Would you like to  wear a mask?</p>", function() {
-        var covidPossibility = 0.5;
+    popup("<p>Would you like to wear a mask?</p>","Yes/No", function(){updateHappiness(1);}, function(){
+        var covidExposed = Math.random();
+        if(covidExposed > 0.3){
+            updateHealthyLevel(-2);
+            updateHappiness(1);
+        }else{
+            getCovid();
+        }
+    }, "No");
+}
 
-    }, "Yes/No", "No");
+function getCovid(){
+    updateHealthyLevel(-5);
+    // need go to TMC for treatment
 }
 
 function updateIntelligence(update){
@@ -58,11 +68,8 @@ function popup(HTML, option, actiona, actionb, choose) {
 			$("#popupbackground").fadeOut(400);
 		});
 
-        if(choose === "Yes"){
-            $("#popupyes").on("click", actiona);
-        }else{
-            $("#popupno").on("click", actionb);
-        }
+        $("#popupyes").on("click", actiona);
+        $("#popupno").on("click", actionb);
 		
 
 	// Ok
