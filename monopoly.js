@@ -368,6 +368,7 @@ function showPlayerFeature(){
         window.location.reload();
     }
     if(healthyLevel < 0){
+        alert("You die! Game reset!");
         window.location.reload();
     }
     if(happiness < 0){
