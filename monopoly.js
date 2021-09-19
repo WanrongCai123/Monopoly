@@ -23,6 +23,9 @@ var intelligence =10;
 var happiness=10;
 var playerLoc = 0;
 var vaccined =2;
+var intervalId;
+var playerLocX;
+var playerLocY;
 //events function
 function LovettEvents() {}
 
@@ -258,6 +261,15 @@ function rollDice(){
         document.getElementById("img1").style.visibility ="hidden";
         document.getElementById("img2").style.visibility ="visible";
     }
+    
+}
+
+
+function updatePlayerTwice() {
+    playerCanvas.clear();
+    locNum = locNum + 2;
+    locNum = locNum % buildingLoc.length;
+    playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
     
 }
 function updatePlayerOnce() {
