@@ -20,7 +20,7 @@ var locNum = 0;
 
 var healthyLevel = 10;
 var intelligence =10;
-var happiness=-5;
+var happiness=10;
 var playerLoc = 0;
 var vaccined = 0;
 var depressed = 0;
