@@ -285,7 +285,6 @@ window.onload = function() {
 //roll dice. Every time move forward, roll dice
 function rollDice(){
     var randomNum = Math.floor(Math.random() * 2 + 1);
-    console.log(randomNum);
     if (randomNum == 1) {
         updatePlayerOnce();
 
