@@ -76,7 +76,7 @@ function BRCEvents(){
 }
 
 function RiceStadium(){
-    popup("<p>What's the name of the speech delivered by President Kennedy at Rice Stadium?</p>","newstring", function(){ correct(); updateIntelligence(1);updateHappiness(1);showPlayerFeature();}, function(){wrong();showPlayerFeature();}, "I have a dream", "We choose to go to the Moon");
+    popup("<p>What's the name of the speech delivered by President Kennedy at Rice Stadium?</p>","newstring", function(){wrong();showPlayerFeature();}, function(){ correct(); updateIntelligence(1);updateHappiness(1);showPlayerFeature();}, "I have a dream", "We choose to go to the Moon");
 
 }
 
