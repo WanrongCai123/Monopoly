@@ -267,10 +267,10 @@ function showPlayerFeature(){
     intell.innerHTML = "Intelligence: " + intelligence;
     happy.innerHTML = "Happiness: "+ happiness;
     ener.innerHTML = "Energy: "+ healthyLevel;
+    console.log("intell: ",intell);
 
 }
 window.onload = function() {
-    showPlayerFeature();
     app = createBkgroundCanvas(document.getElementById("canvas1"));
     //set canvas1 to window size
     app.drawBackground();
@@ -280,6 +280,7 @@ window.onload = function() {
     //set canvas2 to window size
     playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
     $("#rollDice").click(rollDice);
+
 
 };
 //roll dice. Every time move forward, roll dice
@@ -296,6 +297,7 @@ function rollDice(){
         document.getElementById("img1").style.visibility ="hidden";
         document.getElementById("img2").style.visibility ="visible";
     }
+    showPlayerFeature();
     
 }
 
