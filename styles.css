@@ -4,20 +4,61 @@ button {
     font-weight: bold;
     padding: 10px 10px; 
 	background: rgb(247, 244, 244); 
-	border: 20 none;
+	border: none;
     cursor: pointer;
     -webkit-border-radius: 10px;
     border-radius: 10px; 
 }
-img{
-	width:"55";
-    height:"55";
-}
+
 div{
     position:fixed;
     top:3em; 
     left:0em;
 }
+
+#popuptext {
+    margin-top: 40px;
+    margin-left: 20px;
+    color: deeppink;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    border-style: solid;
+    border-color: white;
+    background:#fff;
+    height: 40px;
+}
+
+#popupyes{
+    margin-top: 90px;
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+#popupno{
+    margin-top: 90px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+#popupclose{
+    margin-top: 90px;
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+#popupstringa{
+    margin-top: 90px;
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+#popupstringb{
+    margin-top: 90px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
 span {
     font-family: arial, Verdana, Geneva, Tahoma, sans-serif;
     font-style: italic;

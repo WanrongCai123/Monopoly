@@ -357,9 +357,9 @@ function showPlayerFeature(){
     if(healthyLevel < 0){
         window.location.reload();
     }
+
 }
 window.onload = function() {
-    showPlayerFeature();
     app = createBkgroundCanvas(document.getElementById("canvas1"));
     //set canvas1 to window size
     app.drawBackground();
@@ -370,11 +370,11 @@ window.onload = function() {
     playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
     $("#rollDice").click(rollDice);
 
+
 };
 //roll dice. Every time move forward, roll dice
 function rollDice(){
     var randomNum = Math.floor(Math.random() * 2 + 1);
-    console.log(randomNum);
     if (randomNum == 1) {
         updatePlayerOnce();
 
