@@ -177,7 +177,7 @@ function createBkgroundCanvas(canvas) {
                 drawLine(buildingLoc[i].x + 30, buildingLoc[i].y + 30, buildingLoc[nextLoc].x + 30, buildingLoc[nextLoc].y + 30);
             }
         };
-        img.src = 'images/BuildingLocation.jpg';
+        img.src = 'images/BuildingLocation.PNG';
     }
     let drawLine = function(startX, startY, endX, endY) {
         c.beginPath();
