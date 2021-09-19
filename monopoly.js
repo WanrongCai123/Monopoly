@@ -3,7 +3,7 @@ var canvasHeight = document.getElementById("canvas1").height;
 var buildingLoc = [{x: 958, y:170},
     {x:1120, y:370},
     {x:725, y:620},
-    {x:655, y:460},
+    {x:600, y:400},
     {x:5, y:380},
     {x:300, y:320},
     {x:550, y:320},
@@ -23,6 +23,10 @@ var intelligence =10;
 let happiness=10;
 var playerLoc = 0;
 var vaccined =2;
+
+var intervalId;
+var playerLocX;
+var playerLocY;
 
 //events function
 
@@ -87,6 +91,18 @@ function WellnessCenterEvents(){
 	popup("<p>You Worked out!(Happiness +1)(Healthy Level+1)</p>","ok")
 }
 
+function RMC(){
+	popup("<p>You are invited to HackRice! (Intelligence + 2) </p>","ok")
+	updateIntelligence(2);
+	popup("<p>too much work! (healthy - 1) </p>","ok")
+	updateHealthyLevel(-1)
+	if (intelligence > 12){
+		updateIntelligence(2)
+		updateHappiness(2)
+		popup("<p>You Win a prize!(Happiness + 2)(intelligence + 2)</p>","ok")
+	}
+}
+
 function checkVaccinedStatus(){
     if(playerCanvas.vaccined < 2){
         return false;
@@ -94,6 +110,7 @@ function checkVaccinedStatus(){
         return true;
     }
 }
+
 
 function getCovid(){
     updateHealthyLevel(-5);
@@ -195,9 +212,13 @@ function createBkgroundCanvas(canvas) {
                 drawLine(buildingLoc[i].x + 30, buildingLoc[i].y + 30, buildingLoc[nextLoc].x + 30, buildingLoc[nextLoc].y + 30);
             }
         };
-        img.src = 'images/BuildingLocation.jpg';
+        img.src = 'images/BuildingLocation.PNG';
     }
     let drawLine = function(startX, startY, endX, endY) {
+        c.setLineDash([5,15]); 
+        c.lineWidth = 4; 
+        c.strokeStyle = 'blue'; 
+
         c.beginPath();
         c.moveTo(startX, startY);
         c.lineTo(endX, endY);
@@ -224,7 +245,7 @@ function createPlayerCanvas(canvas) {
         img.onload = function() {
             c.drawImage(img, x, y);
         };
-        img.src = 'images/MatchStickMan.png';
+        img.src = 'images/owl-logo.png';
     };
 
 
@@ -276,6 +297,15 @@ function rollDice(){
         document.getElementById("img1").style.visibility ="hidden";
         document.getElementById("img2").style.visibility ="visible";
     }
+    
+}
+
+
+function updatePlayerTwice() {
+    playerCanvas.clear();
+    locNum = locNum + 2;
+    locNum = locNum % buildingLoc.length;
+    playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
     
 }
 function updatePlayerOnce() {

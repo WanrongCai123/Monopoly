@@ -31,4 +31,5 @@ span {
 canvas {
     border-radius: 50px; 
     border-color: red;
+    border:3px solid；
 }
