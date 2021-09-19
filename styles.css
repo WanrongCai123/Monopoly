@@ -4,7 +4,7 @@ button {
     font-weight: bold;
     padding: 10px 10px; 
 	background: rgb(247, 244, 244); 
-	border: 20 none;
+	border: none;
     cursor: pointer;
     -webkit-border-radius: 10px;
     border-radius: 10px; 
@@ -20,40 +20,44 @@ div{
 }
 
 #popuptext {
-    margin-top: 30px;
+    margin-top: 40px;
     margin-left: 20px;
-    color: black;
+    color: deeppink;
     font-size: 18px;
     font-weight: bold;
     font-style: italic;
+    border-style: solid;
+    border-color: white;
+    background:#fff;
+    height: 40px;
 }
 
 #popupyes{
-    margin-top: 80px;
+    margin-top: 90px;
     margin-left: 20px;
     font-size: 15px;
 }
 
 #popupno{
-    margin-top: 80px;
+    margin-top: 90px;
     margin-left: 10px;
     font-size: 15px;
 }
 
 #popupclose{
-    margin-top: 80px;
+    margin-top: 90px;
     margin-left: 20px;
     font-size: 15px;
 }
 
 #popupstringa{
-    margin-top: 80px;
+    margin-top: 90px;
     margin-left: 20px;
     font-size: 15px;
 }
 
 #popupstringb{
-    margin-top: 80px;
+    margin-top: 90px;
     margin-left: 10px;
     font-size: 15px;
 }
