@@ -31,13 +31,13 @@ var playerLocY;
 
 //events function
 function LovettEvents() {
-    popup("<p>Is the Leaing Tower of Pisa stable?</p>", "Yes/No", function(){
+    popup("<p>Is the Leaning Tower of Pisa stable?</p>", "Yes/No", function(){
+        wrong();
+        showPlayerFeature();
+    }, function(){
         correct();
         updateIntelligence(1);
         updateHappiness(1);
-        showPlayerFeature();
-    },function(){
-        wrong();
         showPlayerFeature();
     })
 }
@@ -128,7 +128,7 @@ function RMCEvents(){
 	popup("<p>Too much work! (healthy - 1) </p>","ok")
 	updateHealthyLevel(-1)
     showPlayerFeature();
-	if (intelligence > 12){
+	if (intelligence > 15){
 		updateIntelligence(2)
 		updateHappiness(2)
         showPlayerFeature();
