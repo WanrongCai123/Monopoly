@@ -125,7 +125,7 @@ function RMCEvents(){
 	popup("<p>You are invited to HackRice! (Intelligence + 2) </p>","ok")
 	updateIntelligence(2);
     showPlayerFeature();
-	popup("<p>too much work! (healthy - 1) </p>","ok")
+	popup("<p>Too much work! (healthy - 1) </p>","ok")
 	updateHealthyLevel(-1)
     showPlayerFeature();
 	if (intelligence > 12){
@@ -169,11 +169,11 @@ function ValhallaEvents(){
 
 function DuncanHallEvents(){
     popup("<p>The ceiling was projected, using an overhead projector, onto the vault and then colored in by students.</p>", "Yes/No", function(){
+        wrong();
+    }, function(){
         correct();
         updateIntelligence(1);
         updateHappiness(1);
-    },function(){
-        wrong();
     })
 }
 
