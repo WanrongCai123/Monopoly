@@ -87,7 +87,14 @@ function WellnessCenterEvents(){
 
 function RMC(){
 	popup("<p>You are invited to HackRice! (Intelligence + 2) </p>","ok")
-
+	updateIntelligence(2);
+	popup("<p>too much work! (healthy - 1) </p>","ok")
+	updateHealthyLevel(-1)
+	if (intelligence > 12){
+		updateIntelligence(2)
+		updateHappiness(2)
+		popup("<p>You Win a prize!(Happiness + 2)(intelligence + 2)</p>","ok")
+	}
 }
 
 function checkVaccinedStatus(){
