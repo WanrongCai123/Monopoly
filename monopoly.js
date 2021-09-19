@@ -133,6 +133,7 @@ function RMCEvents(){
 }
 
 function McnairHallEvents(){
+    popup("<p>You are here at McNair Hall and are taking COVID Test.</p>","ok")
     if(checkCovid() == false){
         updateHappiness(1);
         showPlayerFeature();
