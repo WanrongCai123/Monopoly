@@ -221,9 +221,17 @@ function createPlayerCanvas(canvas) {
     }
 }
 
+function showPlayerFeature(){
+    var intell = document.getElementById("intelligence");
+    var happy = document.getElementById("happiness");
+    var ener = document.getElementById("energy");
+    intell.innerHTML = "Intelligence: " + intelligence;
+    happy.innerHTML = "Happiness: "+ happiness;
+    ener.innerHTML = "Energy: "+ healthyLevel;
 
+}
 window.onload = function() {
-
+    showPlayerFeature();
     app = createBkgroundCanvas(document.getElementById("canvas1"));
     //set canvas1 to window size
     app.drawBackground();
