@@ -121,7 +121,7 @@ function RMCEvents(){
 	popup("<p>You are invited to HackRice! (Intelligence + 2) </p>","ok")
 	updateIntelligence(2);
     showPlayerFeature();
-	popup("<p>too much work! (healthy - 1) </p>","ok")
+	popup("<p>Too much work! (healthy - 1) </p>","ok")
 	updateHealthyLevel(-1)
     showPlayerFeature();
 	if (intelligence > 12){
