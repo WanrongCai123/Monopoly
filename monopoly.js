@@ -233,7 +233,6 @@ window.onload = function() {
     //set canvas2 to window size
     playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
     $("#rollDice").click(rollDice);
-    $("#rollDice").click(FondrenLibraryEvents);
 
 };
 //roll dice. Every time move forward, roll dice
