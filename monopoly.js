@@ -76,6 +76,17 @@ function TudorFieldhouseEvents(){
     });
 }
 
+function WellnessCenterEvents(){
+	updateHealthyLevel(2);
+	updateHappiness(1);
+	popup("<p>You Worked out!(Happiness +1)(Healthy Level+1)</p>","ok")
+}
+
+function RMC(){
+	popup("<p>You are invited to HackRice! (Intelligence + 2) </p>","ok")
+
+}
+
 function checkVaccinedStatus(){
     if(playerCanvas.vaccined < 2){
         return false;
@@ -83,6 +94,7 @@ function checkVaccinedStatus(){
         return true;
     }
 }
+
 
 function getCovid(){
     updateHealthyLevel(-5);
