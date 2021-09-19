@@ -1,6 +1,6 @@
 button {
 	text-align: center;
-    padding: 6px 6px; 
+    padding: 10px 10px; 
 	background: rgb(247, 244, 244); 
 	border: 20 none;
     cursor: pointer;
@@ -8,6 +8,11 @@ button {
     border-radius: 10px; 
 }
 img{
-	width:"35";
-    height:"35";
+	width:"55";
+    height:"55";
+}
+div{
+    position:fixed;
+    top:3em; 
+    left:0em;
 }
