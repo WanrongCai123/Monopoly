@@ -34,6 +34,12 @@ div{
     font-size: 15px;
 }
 
+#popupno{
+    margin-top: 80px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
 #popupclose{
     margin-top: 80px;
     margin-left: 20px;
@@ -43,6 +49,12 @@ div{
 #popupstringa{
     margin-top: 80px;
     margin-left: 20px;
+    font-size: 15px;
+}
+
+#popupstringb{
+    margin-top: 80px;
+    margin-left: 10px;
     font-size: 15px;
 }
 
