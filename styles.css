@@ -18,6 +18,34 @@ div{
     top:3em; 
     left:0em;
 }
+
+#popuptext {
+    margin-top: 30px;
+    margin-left: 20px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#popupyes{
+    margin-top: 80px;
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+#popupclose{
+    margin-top: 80px;
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+#popupstringa{
+    margin-top: 80px;
+    margin-left: 20px;
+    font-size: 15px;
+}
+
 span {
     font-family: arial, Verdana, Geneva, Tahoma, sans-serif;
     font-style: italic;
