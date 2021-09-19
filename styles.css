@@ -9,10 +9,7 @@ button {
     -webkit-border-radius: 10px;
     border-radius: 10px; 
 }
-img{
-	width:"55";
-    height:"55";
-}
+
 div{
     position:fixed;
     top:3em; 
