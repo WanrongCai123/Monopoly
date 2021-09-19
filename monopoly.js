@@ -347,7 +347,7 @@ function showPlayerFeature(){
     var intell = document.getElementById("intelligence");
     var happy = document.getElementById("happiness");
     var ener = document.getElementById("energy");
-    var vacc = document.getElementById("vaccined")
+    var vacc = document.getElementById("vaccined");
 
     intell.innerHTML = "Intelligence: " + intelligence;
     happy.innerHTML = "Happiness: "+ happiness;
