@@ -1,26 +1,36 @@
 //buildingEvents
 //var turn = 0;
 
-function LovettEvents() {}
+function LovettEvents() {
+    popup("<p>Is the Leaing Tower of Pisa stable?</p>", "Yes/No", function(){
+        correct();
+        updateIntelligence(1);
+        updateHappiness(1);
+        popup("<p>Conguatulations! You are right! Your intelligence and happiness has increased.(+1)(+1)</p>","ok");
+    },function(){
+        wrong();
+        popup("<p>Sorry, your answer is wrong.</p>","ok");
+    })
+}
 
 function FondrenLibraryEvents(){
    // updateIntelligence(1);
-    popup("<p>After a day studying in the library, your intelligence has increased.(+1)</p>","ok")
+    popup("<p>After a day studying in the library, your intelligence has increased.(+1)</p>","ok");
 }
 
 function HermannParkEvents(){
     popup("<p>Would you like to wear a mask?</p>","Yes/No", function(){
             updateHappiness(1);
-            popup("<p>After a day hanging out in the Harmann Park, your Happiness has increased.(+1)</p>","ok")
+            popup("<p>After a day hanging out in the Harmann Park, your Happiness has increased.(+1)</p>","ok");
         }, function(){
                 var covidExposed = Math.random();
                 if(covidExposed > 0.3){
                     updateHealthyLevel(-2);
                     updateHappiness(1);
-                    popup("<p>After a day hanging out in the Harmann Park, your Happiness has increased.(+1) \n But because you didn't wear a mask, you have a higher possibility of contracting COVID-19 and your healthy level decreased.(-2)</p>","ok")
+                    popup("<p>After a day hanging out in the Harmann Park, your Happiness has increased.(+1) \n But because you didn't wear a mask, you have a higher possibility of contracting COVID-19 and your healthy level decreased.(-2)</p>","ok");
                 }else{
                     getCovid();
-                    popup("<p>Unfortunately, you have infected COVID-19 since you didn't wear a mask. \n Therefore, you need go to TMC to recovery for 2 rounds.(-5)</p>","ok")
+                    popup("<p>Unfortunately, you have infected COVID-19 since you didn't wear a mask. \n Therefore, you need go to TMC to recovery for 2 rounds.(-5)</p>","ok");
                 }
     });
 }              
@@ -28,7 +38,7 @@ function HermannParkEvents(){
 function SouthServeyEvents(){
     updateHealthyLevel(1);
     updateHappiness(1);
-    popup("<p>Since you enjoyed a good meal in south survey, your heathlthy level and happiness has increase.(+1)(+1)</p>","ok")
+    popup("<p>Since you enjoyed a good meal in south survey, your heathlthy level and happiness has increase.(+1)(+1)</p>","ok");
 }
 
 function BRCEvents(){
@@ -40,16 +50,22 @@ function RiceStadium(){
 
 }
 
+function BrownHallEvent(){
+
+}
+
+
+
 function TudorFieldhouseEvents(){
     popup("<p>Would you like to get vaccined for COVID-19?</p>","Yes/No", function(){
         if(checkVaccinedStatus == false){
             updateHealth(5);
             popup("<p>After being vaccined for COVID-19, your healthy level has strongly increased.(+5)</p>","ok");
         }else{
-            popup("<p>Since you have already been fully vaccined, you can't be double vaccined.</p>")
+            popup("<p>Since you have already been fully vaccined, you can't be double vaccined.</p>","ok");
         }   
     }, function(){
-            popup("<p>Since you have refused to get vaccined, your healthy level did not changed.</p>","ok")
+            popup("<p>Since you have refused to get vaccined, your healthy level did not changed.</p>","ok");
     });
 }
 
@@ -65,6 +81,52 @@ function RiceVillageEvents(){
     }, "Sweet Green", "Shake Shack");
 }
 
+function McnairHallEvents(){
+    if(checkCovid() == false){
+        updateHappiness(1);
+        popup("<p>Conguatulations! You are healthy right now!</p>","ok");
+    }else{
+        getCovid();
+    }
+}
+
+function ValhallaEvents(){
+    popup("<p>You have drunk some beers at Valhalla and your happiness has increased.(+2) Do you want to continue?</p>", "Yes/No", function(){
+        popup("<p>What kind of drink do you want?</p>", "newstring", function(){
+            updateHappiness(-2);
+            updateHealthyLevel(-2);
+            popup("<p>Getting drunk doesn't make you feel good. Your happiness and healthy level has decreased.(-2)(-2)</p>","ok");
+        },function(){
+            updateHappiness(-1);
+            updateHealthyLevel(-1);
+            popup("<p>Getting drunk doesn't make you feel good. Your happiness and healthy level has decreased.(-1)(-1)</p>","ok");
+        }, "beer", "wine")
+    },function(){
+        popup("<p>Good night.</p>","ok");
+    })
+}
+
+function DuncanHallEvents(){
+    popup("<p>The ceiling was projected, using an overhead projector, onto the vault and then colored in by students.</p>", "Yes/No", function(){
+        correct();
+        updateIntelligence(1);
+        updateHappiness(1);
+        popup("<p>Conguatulations! You are right! Your intelligence and happiness has increased.(+1)(+1)</p>","ok");
+    },function(){
+        wrong();
+        popup("<p>Sorry, your answer is wrong.</p>","ok");
+    })
+}
+
+function checkCovid(){
+    var covidtest = Math.random();
+    if(covidtest > 0.002){
+        return false;
+    }else{
+        return true;
+    }
+}
+
 function checkVaccinedStatus(){
     if(playerCanvas.vaccined < 2){
         return false;
@@ -75,6 +137,7 @@ function checkVaccinedStatus(){
 
 function getCovid(){
     updateHealthyLevel(-5);
+    popup("<p>Unfortunately, you have gotten COVID-19.You need to go to TMC for treatment.</p>","ok");
     // need go to TMC for treatment
 }
 
@@ -98,11 +161,11 @@ function updateHealthyLevel(update){
 }
 
 function correct(){
-	document.getElementById("popuptext").innerHTML = "You are Correct!"
+	document.getElementById("popuptext").innerHTML = "You are Correct!";
 }
 
 function wrong(){
-	document.getElementById("popuptext").innerHTML = "Wrong Answer:("
+	document.getElementById("popuptext").innerHTML = "Wrong Answer:(";
 }
 
 function popup(HTML, option, actiona, actionb, stringa, stringb) {

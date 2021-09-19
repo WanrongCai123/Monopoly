@@ -20,11 +20,12 @@ var locNum = 0;
 
 var healthyLevel = 10;
 var intelligence =10;
-var happiness=10;
+let happiness=10;
 var playerLoc = 0;
 var vaccined =2;
+
 //events function
-function LovettEvents() {}
+
 
 function FondrenLibraryEvents(){
     updateIntelligence(1);
@@ -34,15 +35,18 @@ function FondrenLibraryEvents(){
 function HermannParkEvents(){
     popup("<p>Would you like to wear a mask?</p>","Yes/No", function(){
         updateHappiness(1);
+        console.log(happiness);
         popup("<p>After a day hanging out in the Harmann Park, your Happiness has increased.(+1)</p>","ok")
     }, function(){
         var covidExposed = Math.random();
         if(covidExposed > 0.3){
             updateHealthyLevel(-2);
             updateHappiness(1);
+            console.log(happiness);
             popup("<p>After a day hanging out in the Harmann Park, your Happiness has increased.(+1) \n But because you didn't wear a mask, you have a higher possibility of contracting COVID-19 and your healthy level decreased.(-2)</p>","ok")
         }else{
             getCovid();
+            updateHappiness(1);
             popup("<p>Unfortunately, you have infected COVID-19 since you didn't wear a mask. \n Therefore, you need go to TMC to recovery for 2 rounds.(-5)</p>","ok")
         }
     });
@@ -66,6 +70,7 @@ function RiceStadium(){
 function TudorFieldhouseEvents(){
     popup("<p>Would you like to get vaccined for COVID-19?</p>","Yes/No", function(){
         if(checkVaccinedStatus == false){
+            updateVaccined(1);
             updateHealth(5);
             popup("<p>After being vaccined for COVID-19, your healthy level has strongly increased.(+5)</p>","ok");
         }else{
@@ -74,6 +79,12 @@ function TudorFieldhouseEvents(){
     }, function(){
         popup("<p>Since you have refused to get vaccined, your healthy level did not changed.</p>","ok")
     });
+}
+
+function WellnessCenterEvents(){
+	updateHealthyLevel(2);
+	updateHappiness(1);
+	popup("<p>You Worked out!(Happiness +1)(Healthy Level+1)</p>","ok")
 }
 
 function checkVaccinedStatus(){
@@ -100,13 +111,20 @@ function updateIntelligence(update){
 function updateHappiness(update){
     // var p = player[turn];
     // p.happiness = p.happiness + update;
-    playerCanvas.happyiness = playerCanvas.happyiness + update;
+
+    happiness = happiness + update;
 }
 
 function updateHealthyLevel(update){
     // var p = player[turn];
     // p.healthyLevel = p.healthyLevel + update;
-    playerCanvas.healthyLevel = playerCanvas.healthyLevel + update;
+    healthyLevel = healthyLevel + update;
+}
+
+function updateVaccined(update){
+    // var p = player[turn];
+    // p.healthyLevel = p.healthyLevel + update;
+    vaccined = vaccined + update;
 }
 
 function correct(){
@@ -265,16 +283,34 @@ function updatePlayerOnce() {
     locNum = locNum + 1;
     locNum = locNum % buildingLoc.length;
     playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
-    
+    gotoEachEvent(locNum);
 }
 function updatePlayerTwice() {
     playerCanvas.clear();
     locNum = locNum + 2;
     locNum = locNum % buildingLoc.length;
     playerCanvas.drawPlayer(buildingLoc[locNum].x, buildingLoc[locNum].y);
-    
+    gotoEachEvent(locNum);
 }
 
+function gotoEachEvent(locNum){
+    switch(locNum){
+        case 0: LovettEvents(); break;
+        case 1: HermannParkEvents(); break;
+        case 2: BRCEvents(); break;
+        case 3: TudorFieldhouseEvents(); break;
+        case 4: RiceVillageEvents(); break;
+        case 5: RiceStadium(); break;
+        case 6: BrownHallEvent(); break;
+        case 7: WellnessCenterEvent(); break;
+        case 8: McnairHallEvents(); break;
+        case 9: RMCEvents(); break;
+        case 10: FondrenLibraryEvents(); break;
+        case 11: ValhallaEvents(); break;
+        case 12: DuncanHallEvents(); break;
+        default: break;
+    }
+}
 
 function resetDice(){
 
