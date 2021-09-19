@@ -20,9 +20,11 @@ var locNum = 0;
 
 var healthyLevel = 10;
 var intelligence =10;
-var happiness=10;
+var happiness=-5;
 var playerLoc = 0;
 var vaccined = 0;
+var depressed = 0;
+
 var intervalId;
 var playerLocX;
 var playerLocY;
@@ -48,12 +50,14 @@ function FondrenLibraryEvents(){
 
 function HermannParkEvents(){
     popup("<p>Would you like to wear a mask?</p>","Yes/No", function(){
+        showPlayerFeature();
         updateHappiness(1);
         showPlayerFeature();
         popup("<p>After a day hanging out in the Hermann Park, your Happiness has increased.(+1)</p>","ok")
     }, function(){
         var covidExposed = Math.random();
         if(covidExposed > 0.3){
+            showPlayerFeature();
             updateHealthyLevel(-2);
             updateHappiness(1);
             showPlayerFeature();
@@ -72,19 +76,18 @@ function BRCEvents(){
 }
 
 function RiceStadium(){
-    popup("<p>What's the name of the speech delivered by President Kennedy at Rice Stadium?</p>","newstring", function(){correct(); updateIntelligence(1);updateHappiness(1);showPlayerFeature();}, function(){wrong();showPlayerFeature();}, "I have a dream", "We choose to go to the Moon");
-
-}
-
-function BrownHallEvent(){
+    popup("<p>What's the name of the speech delivered by President Kennedy at Rice Stadium?</p>","newstring", function(){ correct(); updateIntelligence(1);updateHappiness(1);showPlayerFeature();}, function(){wrong();showPlayerFeature();}, "I have a dream", "We choose to go to the Moon");
 
 }
 
 function TudorFieldhouseEvents(){
-    popup("<p>Would you like to get vaccinated for COVID-19?</p>","Yes/No", function(){
-        if(checkVaccinedStatus == false){
+    popup("<p>Would you like to get vaccined for COVID-19?</p>","Yes/No", function(){
+        if(checkVaccinedStatus() == false){
+            console.log(vaccined);
             updateVaccined(1);
-            updateHealth(5);
+            console.log(vaccined);
+            updateHealthyLevel(5);
+            console.log(healthyLevel);
             showPlayerFeature();
             popup("<p>After being vaccinated for COVID-19, your healthy level has strongly increased.(+5)</p>","ok");
         }else{
@@ -111,10 +114,11 @@ function RiceVillageEvents(){
 }
 
 function WellnessCenterEvents(){
+    showPlayerFeature();
 	updateHealthyLevel(2);
 	updateHappiness(1);
     showPlayerFeature();
-	popup("<p>You Worked out!(Happiness +1)(Healthy Level+1)</p>","ok")
+	popup("<p>You Worked out at wellness center!(Happiness +1)(Healthy Level+1)</p>","ok")
 }
 
 function RMCEvents(){
@@ -148,6 +152,7 @@ function ValhallaEvents(){
             updateHappiness(-2);
             updateHealthyLevel(-2);
             showPlayerFeature();
+            console.log(healthyLevel);
             popup("<p>Getting drunk doesn't make you feel good. Your happiness and healthy level has decreased.(-2)(-2)</p>","ok");
         },function(){
             updateHappiness(-1);
@@ -182,7 +187,7 @@ function checkCovid(){
 }
 
 function checkVaccinedStatus(){
-    if(playerCanvas.vaccined < 2){
+    if(vaccined < 2){
         return false;
     }else{
         return true;
@@ -205,7 +210,12 @@ function updateHappiness(update){
 }
 
 function updateHealthyLevel(update){
-    healthyLevel = healthyLevel + update;
+    if(depressed == 0){ 
+        healthyLevel = healthyLevel + update; 
+    }
+    else {
+        healthyLevel = healthyLevel + (update * 2);
+    }
 }
 
 function updateVaccined(update){
@@ -358,9 +368,14 @@ function showPlayerFeature(){
         window.location.reload();
     }
     if(healthyLevel < 0){
+        alert("You die! Game reset!");
         window.location.reload();
     }
-
+    if(happiness < 0){
+        depressed = 1;
+    }else{
+        depressed = 0;
+    }
 }
 window.onload = function() {
     app = createBkgroundCanvas(document.getElementById("canvas1"));
@@ -422,7 +437,7 @@ function gotoEachEvent(locNum){
         case 3: TudorFieldhouseEvents(); break;
         case 4: RiceVillageEvents(); break;
         case 5: RiceStadium(); break;
-        case 6: BrownHallEvent(); break;
+        case 6: break;
         case 7: WellnessCenterEvents(); break;
         case 8: McnairHallEvents(); break;
         case 9: RMCEvents(); break;
