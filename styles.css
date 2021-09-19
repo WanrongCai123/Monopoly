@@ -28,3 +28,7 @@ span {
     background: rgb(137, 217, 248);
 
 }
+canvas {
+    border-radius: 50px; 
+    border-color: red;
+}
