@@ -118,7 +118,7 @@ function WellnessCenterEvents(){
 	updateHealthyLevel(2);
 	updateHappiness(1);
     showPlayerFeature();
-	popup("<p>You Worked out!(Happiness +1)(Healthy Level+1)</p>","ok")
+	popup("<p>You Worked out at wellness center!(Happiness +1)(Healthy Level+1)</p>","ok")
 }
 
 function RMCEvents(){
