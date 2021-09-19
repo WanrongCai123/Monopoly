@@ -24,6 +24,7 @@ var happiness=-5;
 var playerLoc = 0;
 var vaccined = 0;
 var depressed = 0;
+
 var intervalId;
 var playerLocX;
 var playerLocY;
@@ -52,7 +53,7 @@ function HermannParkEvents(){
         showPlayerFeature();
         updateHappiness(1);
         showPlayerFeature();
-        popup("<p>After a day hanging out in the Harmann Park, your Happiness has increased.(+1)</p>","ok")
+        popup("<p>After a day hanging out in the Hermann Park, your Happiness has increased.(+1)</p>","ok")
     }, function(){
         var covidExposed = Math.random();
         if(covidExposed > 0.3){
@@ -60,7 +61,7 @@ function HermannParkEvents(){
             updateHealthyLevel(-2);
             updateHappiness(1);
             showPlayerFeature();
-            popup("<p>After a day hanging out in the Harmann Park, your Happiness has increased.(+1) \n But because you didn't wear a mask, you have a higher possibility of contracting COVID-19 and your healthy level decreased.(-2)</p>","ok")
+            popup("<p>After a day hanging out in the Hermann Park, your Happiness has increased.(+1) \n But because you didn't wear a mask, you have a higher possibility of contracting COVID-19 and your healthy level decreased.(-2)</p>","ok")
         }else{
             getCovid();
             updateHappiness(1);
@@ -71,7 +72,7 @@ function HermannParkEvents(){
 }
 
 function BRCEvents(){
-    popup("<p>Does mRNA vaccine contains live virus?</p>","Yes/No", function(){ correct(); updateIntelligence(1); updateHappiness(1); showPlayerFeature();}, function(){wrong();showPlayerFeature();});
+    popup("<p>Does mRNA vaccine contains live virus?</p>","Yes/No", function(){wrong();showPlayerFeature();},function(){correct(); updateIntelligence(1);updateHappiness(1);showPlayerFeature();});
 }
 
 function RiceStadium(){
@@ -88,13 +89,13 @@ function TudorFieldhouseEvents(){
             updateHealthyLevel(5);
             console.log(healthyLevel);
             showPlayerFeature();
-            popup("<p>After being vaccined for COVID-19, your healthy level has strongly increased.(+5)</p>","ok");
+            popup("<p>After being vaccinated for COVID-19, your healthy level has strongly increased.(+5)</p>","ok");
         }else{
-            popup("<p>Since you have already been fully vaccined, you can't be double vaccined.</p>")
+            popup("<p>Since you have already been fully vaccinated, you can't be double vaccinated.</p>")
         }
     }, function(){
         showPlayerFeature();
-        popup("<p>Since you have refused to get vaccined, your healthy level did not changed.</p>","ok")
+        popup("<p>Since you have refused to get vaccinated, your healthy level did not change.</p>","ok")
     });
 }
 
@@ -124,7 +125,7 @@ function RMCEvents(){
 	popup("<p>You are invited to HackRice! (Intelligence + 2) </p>","ok")
 	updateIntelligence(2);
     showPlayerFeature();
-	popup("<p>Too much work! (healthy - 1) </p>","ok")
+	popup("<p>too much work! (healthy - 1) </p>","ok")
 	updateHealthyLevel(-1)
     showPlayerFeature();
 	if (intelligence > 12){
@@ -136,7 +137,6 @@ function RMCEvents(){
 }
 
 function McnairHallEvents(){
-    popup("<p>You are here at McNair Hall and are taking COVID Test.</p>","ok")
     if(checkCovid() == false){
         updateHappiness(1);
         showPlayerFeature();
@@ -357,9 +357,12 @@ function showPlayerFeature(){
     var intell = document.getElementById("intelligence");
     var happy = document.getElementById("happiness");
     var ener = document.getElementById("energy");
+    var vacc = document.getElementById("vaccined");
+
     intell.innerHTML = "Intelligence: " + intelligence;
     happy.innerHTML = "Happiness: "+ happiness;
     ener.innerHTML = "Energy: "+ healthyLevel;
+    vacc.innerHTML = "Vaccine: "+ vaccined;
     if(intelligence >= 20){
         alert("You learned a lot!");
         window.location.reload();
