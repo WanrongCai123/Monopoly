@@ -22,7 +22,7 @@ var healthyLevel = 10;
 var intelligence =10;
 var happiness=10;
 var playerLoc = 0;
-var vaccined =2;
+var vaccined = 0;
 var intervalId;
 var playerLocX;
 var playerLocY;
@@ -347,9 +347,12 @@ function showPlayerFeature(){
     var intell = document.getElementById("intelligence");
     var happy = document.getElementById("happiness");
     var ener = document.getElementById("energy");
+    var vacc = document.getElementById("vaccined")
+
     intell.innerHTML = "Intelligence: " + intelligence;
     happy.innerHTML = "Happiness: "+ happiness;
     ener.innerHTML = "Energy: "+ healthyLevel;
+    vacc.innerHTML = "Vaccine: "+ vaccined;
     if(intelligence >= 20){
         alert("You learned a lot!");
         window.location.reload();
