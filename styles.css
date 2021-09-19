@@ -16,3 +16,13 @@ div{
     top:3em; 
     left:0em;
 }
+span {
+    font-family: arial, Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+	font-family: Times New Roman;
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 25px;
+    background: rgb(137, 217, 248);
+
+}
