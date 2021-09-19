@@ -79,6 +79,17 @@ function TudorFieldhouseEvents(){
     });
 }
 
+function WellnessCenterEvents(){
+	updateHealthyLevel(2);
+	updateHappiness(1);
+	popup("<p>You Worked out!(Happiness +1)(Healthy Level+1)</p>","ok")
+}
+
+function RMC(){
+	popup("<p>You are invited to HackRice! (Intelligence + 2) </p>","ok")
+
+}
+
 function checkVaccinedStatus(){
     if(playerCanvas.vaccined < 2){
         return false;
@@ -86,6 +97,7 @@ function checkVaccinedStatus(){
         return true;
     }
 }
+
 
 function getCovid(){
     updateHealthyLevel(-5);
@@ -180,7 +192,7 @@ function createBkgroundCanvas(canvas) {
                 drawLine(buildingLoc[i].x + 30, buildingLoc[i].y + 30, buildingLoc[nextLoc].x + 30, buildingLoc[nextLoc].y + 30);
             }
         };
-        img.src = 'images/BuildingLocation.jpg';
+        img.src = 'images/BuildingLocation.PNG';
     }
     let drawLine = function(startX, startY, endX, endY) {
         c.beginPath();
