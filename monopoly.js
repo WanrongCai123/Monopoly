@@ -195,6 +195,10 @@ function createBkgroundCanvas(canvas) {
         img.src = 'images/BuildingLocation.PNG';
     }
     let drawLine = function(startX, startY, endX, endY) {
+        c.setLineDash([5,15]); 
+        c.lineWidth = 4; 
+        c.strokeStyle = 'blue'; 
+
         c.beginPath();
         c.moveTo(startX, startY);
         c.lineTo(endX, endY);
