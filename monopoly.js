@@ -206,7 +206,7 @@ function createPlayerCanvas(canvas) {
         img.onload = function() {
             c.drawImage(img, x, y);
         };
-        img.src = 'images/MatchStickMan.png';
+        img.src = 'images/owl-logo.png';
     };
 
 
